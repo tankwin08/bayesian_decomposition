@@ -19,6 +19,10 @@ data and the estimation accuracy.
 
 Overall,the Bayesian decomposition is the intersection of waveform decompostion, Bayesian and non-linear dynamics.
 
+![alt text](https://github.com/tankwin08/bayesian_decomposition/blob/master/man/figures/introduction1.png)
+
+In my paper, combined these sections to conduct decompostion of waveform processing over a large region and also conduct uncertianty analysis of our processing at the parameter, derived point cloud and surface model levels.
+
 ![alt text](https://github.com/tankwin08/bayesian_decomposition/blob/master/man/figures/bayesian_uncertainty.jpg)
 
 https://cran.r-project.org/web/packages/tidybayes/vignettes/tidy-brms.html#plotting-point-summaries-and-intervals
