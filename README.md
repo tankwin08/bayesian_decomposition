@@ -26,11 +26,10 @@ In my paper, I combined these sections to conduct decompostion of waveforms over
 
 ![alt text](https://github.com/tankwin08/bayesian_decomposition/blob/master/man/figures/bayesian_uncertainty.jpg)
 
-https://cran.
 
-*How to implement it*
+## How to implement it
 
-The following section will give you a simple example of the Bayesian decompostion using waveform lidar dataset (or any csv file) from waveformlidar package.
+The following section will give you a simple example of the Bayesian decompostion using waveform lidar dataset from waveformlidar package or any csv file containg the waveform intensity information.
 
 ---
 ### Import packages 
@@ -90,9 +89,11 @@ priors<-ori_priors[iid]
 ####to collect all information about these prior information
 par_dat<- data.frame(do.call(rbind,priors))
 
+```
 
-##prepare the data
+### prepare the data
 
+```R
 y<-as.numeric(return1[iid,]);
 index<-y[1]
 y<-y[-c(1)]
@@ -117,7 +118,7 @@ prior<-init$start
   
 ```
 
-###preprare the parameter setting up for the model
+### preprare the parameter setting up for the model
 
 We need to assign some probability distribution to the parameters of interest. Generally the normal distribution is used to define the prior distribution of paramaters. In waveformlidar package, the peakfind can be used to roughly estimate the possible parameters for Gaussian decompostion. Here we used this function to obtain the prior information of parameters.
 
@@ -145,7 +146,7 @@ We need to assign some probability distribution to the parameters of interest. G
 ```
 You can set different prior distribution to model the waveform such as uniform distribution of these prior information. OR for some simple waveform with no noise, you can get results estimated without assigning the prior but take longer time to obtain the results compared to the model with prior assigned. For the complicated waveform, it bettwe to use prior distributio as it may give you some unreasonable results.
 
-## Bayesian Model building 
+### Bayesian Model building 
 
 ```R
 
@@ -157,7 +158,7 @@ You can set different prior distribution to model the waveform such as uniform d
              warmup=2000,control = list(adapt_delta = 0.9))
 
 ```
-## Get the parameters from our Bayesian estimation
+### Get the parameters from our Bayesian estimation
 
 ```R
  fit1 
@@ -196,10 +197,12 @@ plot(fit1, pars = "^b",parameters="b_A1_Intercept")
 
 ##You can see all of paramters
 plot(fit1)
+```
+![alt text](https://github.com/tankwin08/bayesian_decomposition/blob/master/man/figures/Bayesian_parameters.png)
 
+### Uncertainty
 
-##plot y and predicted y with uncertainty
-
+```R
 ##get the posterior samples of parameters
 
 post_sam<-as.mcmc(fit1,pars=c("A1","u1","sigma1"))
@@ -240,6 +243,7 @@ text(max(x)-8,max(y1)-20,"SE= 8.3",cex=2.5)
 ```
 ![alt text](https://github.com/tankwin08/bayesian_decomposition/blob/master/man/figures/visualization_y_uncertainty.png)
 
+### Model diagnosis 
 
 We may want to know how good of our estimation of y compared to our real waveform lidar data
 ```R
