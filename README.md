@@ -30,7 +30,8 @@ In my paper, I combined these sections to conduct decompostion of waveforms over
 ## How to implement it
 
 The following section will give you a simple example of the Bayesian decompostion using waveform lidar dataset from waveformlidar package or any csv file containg the waveform intensity information.
-More comprensive codes can be found in 20200301_Bayesian_decomposition_example.R.
+More comprensive codes can be found in 20200301_Bayesian_decomposition_example.R (https://github.com/tankwin08/bayesian_decomposition/blob/master/20200301_Bayesian_decomposition_example.R).
+
 ---
 ### Import packages 
 if you don't have these packages, please install it using function install.packages()
